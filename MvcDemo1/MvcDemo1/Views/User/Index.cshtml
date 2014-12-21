@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MvcDemo1.Models.UserModels>
+
+@ViewBag.Title
+
+<h2>Index</h2>
+
+@Html.ActionLink("Create User", "Create")
+
+<table class="userList">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>        
+    </tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+    </tr>
+}
+</table>
