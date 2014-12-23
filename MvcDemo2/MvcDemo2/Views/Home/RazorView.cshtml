@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "RazorView";
+    string message = "";
+    if(IsPost){
+        message = "Form submitted";
+    }
+}
+
+
+     
+@ListingItems(new String[] {"Harsha", "Danam", "Ganesh"})
+
+@ListingItems(new String[] {"Harsha1", "Danam1", "Ganesh1"})
+
+@ListingItems(new String[] {"Harsha2", "Danam3", "Ganesh2"})
+
+<h2>RazorView</h2>
+@using (Html.BeginForm("FormSubmit", "Home", FormMethod.Post, new { Id="Form1", @class="formContainer"}))
+{
+    <p>@Html.TextBox("TextBox1", "Value1", new { Id="TextBoxId", @class="TextBoxClass"})</p>
+    <p>@Html.TextBox("TextBox2")</p>   
+    <p>@Html.TextBox("TextBox3")</p>
+    
+    <input type="submit" value="Submit" />
+}
+
+@message
+
+<p>Inline Html Helpers</p>
+@helper ListingItems(string[] items)
+{
+    <ol>
+        @foreach (string item in items)
+        {
+        <li>@item</li>
+        }
+    </ol>
+}
+
+
+
+<p>Built In Html Helpers</p>
+    <span>Standard Html Helpers</span>
+    @Html.CheckBox("CheckBox1", false)
+    @Html.TextBox("TextBox1")
+
+    <span>Strongly Types Html Helpers</span>
+@*    @Html.TextBoxFor(model => model.Name) *@
+<p>Template Html Helpers</p>
+    @Html.Display("Name")
+    @Html.Editor("Name")
+
+<p>Custom Html Helpers</p>
+@using MvcDemo2.Helpers
+@MyHtmlHelpers.CustomeImage()
+
